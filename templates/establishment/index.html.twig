@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EstablishmentController!{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="{{ path('establishment_create') }}" class="btn btn-primary">Créer un nouvel établissement</a>
+        </div>
+
+        <div class="row">
+            {% for establishment in establishments %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ establishment.name }}</h2>
+                            <p class="card-title">{{ establishment.description }}</p>
+                            <a class="btn btn-success" href="{{ path('establishment_update', { id: establishment.id }) }}">Update</a>
+                            <a class="btn btn-danger" href="{{ path('establishment_delete', { id: establishment.id }) }}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

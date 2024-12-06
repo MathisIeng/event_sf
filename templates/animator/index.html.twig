@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnimatorController!{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="{{ path('animator_create') }}" class="btn btn-primary">Créer un nouvel animateur</a>
+        </div>
+
+        <div class="row">
+            {% for animator in animators %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ animator.firstname }} {{ animator.lastname }}</h2>
+                            <p class="card-title">{{ animator.phone }}</p>
+                            <p class="card-title">{{ animator.email }}</p>
+                            <a class="btn btn-success" href="{{ path('animator_update', {id: animator.id}) }}">Update</a>
+                            <a class="btn btn-danger" href="{{ path('animator_delete', {id: animator.id}) }}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
+

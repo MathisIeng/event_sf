@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EstablishmentController!{% endblock %}
+
+{% block body %}
+
+    <h1>Résultats pour "{{ query }}"</h1>
+
+    <h2>Catégories</h2>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }}</li>
+        {% else %}
+            <li>Aucune catégorie trouvée.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Événements</h2>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.title }} - {{ event.startTime|date('d/m/Y') }}</li>
+        {% else %}
+            <li>Aucun événement trouvé.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Animateurs</h2>
+    <ul>
+        {% for animator in animators %}
+            <li>{{ animator.firstname }} {{ animator.lastname }}</li>
+        {% else %}
+            <li>Aucun animateur trouvé.</li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

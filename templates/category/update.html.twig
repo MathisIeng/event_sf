@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition de la catégorie - {{ category.name }}{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Édition de la catégorie : {{ category.name }}</h3>
+        <a href="{{ path('category') }}" class="btn btn-secondary">Retour à la liste des catégories</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="post" action="{{ path('category_update', { id: category.id }) }}">
+                {{ form_start(formView, {'attr': {'class': 'needs-validation'}}) }}
+
+                {{ form_widget(formView, {'attr': {'class': 'form-control'}}) }}
+
+                {{ form_end(formView) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition de l'établissement - {{ establishment.name }}{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Édition de l'établissement : {{ establishment.name }}</h3>
+    <a href="{{ path('establishment') }}" class="btn btn-secondary">Retour à la liste des établissements</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form method="post" action="{{ path('establishment_update', { id: establishment.id }) }}">
+            {{ form_start(formView, {'attr': {'class': 'needs-validation'}}) }}
+
+            {{ form_widget(formView, {'attr': {'class': 'form-control'}}) }}
+
+            {{ form_end(formView) }}
+        </form>
+    </div>
+</div>
+{% endblock %}
