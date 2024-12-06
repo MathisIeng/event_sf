@@ -17,6 +17,11 @@
                             <h2 class="card-title">{{ room.name }}</h2>
                             <p class="card-title">{{ room.capacity }}</p>
                             <p class="btn btn-warning">{{ room.establishment.name }}</p>
+                            <div>
+                                {% for image in room.images %}
+                                    <img class="rounded mb-3" src="{{ asset('assets/images/' ~ image.path) }}" width="200" alt="Image of {{ room.name }}">
+                                {% endfor %}
+                            </div>
                             <a class="btn btn-success" href="{{ path('room_update', { id: room.id }) }}">Update</a>
                             <a class="btn btn-danger" href="{{ path('room_delete', { id: room.id }) }}">Delete</a>
                         </div>

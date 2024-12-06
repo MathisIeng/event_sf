@@ -41,4 +41,14 @@ class CategoryRepository extends ServiceEntityRepository
     //        ;
     //    }
 
+    public function search(string $search) {
+
+        return $this->createQueryBuilder('c') // On crée un queryBuilder pour l'entité Animator
+        ->where('c.name LIKE :search') // Clause pour titre
+        ->setParameter('search', '%'.$search.'%') // Paramètre de recherche ici, avant et après
+        ->getQuery()
+            ->getResult();
+
+        // SELECT * FORM article AS a WHERE a.title LIKE '%search%' OR WHERE a.content LIKE '%search%'
+    }
 }

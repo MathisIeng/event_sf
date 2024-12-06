@@ -4,32 +4,48 @@
 
 {% block body %}
 
-    <h1>Résultats pour "{{ query }}"</h1>
 
-    <h2>Catégories</h2>
-    <ul>
+
+    <h2 class="m-3">Catégories</h2>
+    <ul class="list-group">
         {% for category in categories %}
-            <li>{{ category.name }}</li>
+            <li class="list-group-item list-group-item-success">{{ category.name }}</li>
         {% else %}
-            <li>Aucune catégorie trouvée.</li>
+            <li class="list-group-item list-group-item-danger">Aucune catégorie trouvée.</li>
         {% endfor %}
     </ul>
 
-    <h2>Événements</h2>
-    <ul>
+    <h2 class="m-3">Événements</h2>
+    <ul class="list-group">
         {% for event in events %}
-            <li>{{ event.title }} - {{ event.startTime|date('d/m/Y') }}</li>
+            <li class="list-group-item list-group-item-warning">{{ event.title }} - {{ event.startTime|date('d/m/Y') }}</li>
         {% else %}
-            <li>Aucun événement trouvé.</li>
+            <li class="list-group-item list-group-item-danger">Aucun événement trouvé.</li>
         {% endfor %}
     </ul>
 
-    <h2>Animateurs</h2>
-    <ul>
+    <h2 class="m-3">Animateurs</h2>
+    <ul class="list-group">
         {% for animator in animators %}
-            <li>{{ animator.firstname }} {{ animator.lastname }}</li>
+            <li class="list-group-item list-group-item-info">{{ animator.firstname }} {{ animator.lastname }}</li>
         {% else %}
-            <li>Aucun animateur trouvé.</li>
+            <li class="list-group-item list-group-item-danger">Aucun animateur trouvé.</li>
+        {% endfor %}
+    </ul>
+    <h2 class="m-3">Salles</h2>
+    <ul class="list-group">
+        {% for room in rooms %}
+            <li class="list-group-item list-group-item-light">{{ room.name }}</li>
+        {% else %}
+            <li class="list-group-item list-group-item-danger">Aucune salle trouvée.</li>
+        {% endfor %}
+    </ul>
+    <h2 class="m-3">Etablissements</h2>
+    <ul class="list-group">
+        {% for establishment in establishments %}
+            <li class="list-group-item list-group-item-dark">{{ establishment.name }}</li>
+        {% else %}
+            <li class="list-group-item list-group-item-danger">Aucun établissement trouvé.</li>
         {% endfor %}
     </ul>
 

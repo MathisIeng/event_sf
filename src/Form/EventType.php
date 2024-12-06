@@ -46,7 +46,7 @@ class EventType extends AbstractType
             ])
             ->add('animator', EntityType::class, [
                 'class' => Animator::class,
-                'choice_label' => 'firstname',
+                'choice_label' => 'fullname',
                 'attr' => ['class' => 'form-control'],
                 'label_attr' => ['class' => 'form_label'],
                 'label' => 'Animateur',

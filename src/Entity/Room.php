@@ -21,11 +21,20 @@ class Room
     private ?int $capacity = null;
 
     #[ORM\ManyToOne(targetEntity: Establishment::class, inversedBy: "rooms")]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "cascade")]
     private ?Establishment $establishment = null;
 
     #[ORM\OneToMany(targetEntity: Event::class, mappedBy: "room")]
+    #[ORM\JoinColumn(nullable: false, onDelete: "cascade")]
     private Collection $events;
+
+    #[ORM\OneToMany(targetEntity: Image::class ,mappedBy: "room")]
+    private Collection $images;
+
+    public function getImages(): Collection {
+
+        return $this->images;
+    }
 
     public function getEvents(): Collection {
 

@@ -29,6 +29,9 @@ class Animator
     #[ORM\OneToMany(targetEntity: Event::class, mappedBy: "animator")]
     private Collection $events;
 
+    public function getFullName(): string {
+        return $this->firstname . ' ' . $this->lastname;
+    }
     public function getEvents(): Collection {
 
         return $this->events;
