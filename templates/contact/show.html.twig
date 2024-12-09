@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boîte de Réception</title>
+    <!-- Lien vers Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <!-- Header de la boîte mail -->
+    <div class="d-flex align-items-center justify-content-between bg-primary text-white p-3 rounded shadow-sm">
+        <h1 class="h5 mb-0">Ma Boîte de Réception</h1>
+        <button class="btn btn-light btn-sm">Nouveau Mail</button>
+    </div>
+
+    <!-- Corps du mail -->
+    <div class="card mt-4 shadow-sm">
+        <div class="card-header bg-light d-flex justify-content-between">
+            <div>
+                <h5 class="mb-0">Sujet : Détails de votre message</h5>
+                <small class="text-muted">Reçu de : {{ contact.email }}</small>
+            </div>
+            <small class="text-muted">12:34 PM, 06/12/2024</small>
+        </div>
+        <div class="card-body">
+            <h6 class="text-muted">De : {{ contact.name }}</h6>
+            <hr>
+            <p>{{ contact.content }}</p>
+        </div>
+        <div class="card-footer bg-light d-flex justify-content-end gap-2">
+            <button class="btn btn-success btn-sm">Répondre</button>
+            <button class="btn btn-danger btn-sm">Supprimer</button>
+        </div>
+    </div>
+</div>
+
+<!-- Lien vers Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

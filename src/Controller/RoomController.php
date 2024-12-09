@@ -87,9 +87,17 @@ class RoomController extends AbstractController
     }
 
     #[Route('/room/{id}/delete', name: 'room_delete')]
-    public function delete(int $id, RoomRepository $roomRepository, EntityManagerInterface $entityManager): Response {
+    public function delete(Request $request, int $id, RoomRepository $roomRepository, EntityManagerInterface $entityManager): Response {
 
         $room = $roomRepository->find($id);
+
+        foreach ($room->getImages() as $image) {
+            $imagePath = $this->getParameter('uploads_directory') . '/' . $image->getPath();
+
+            unlink($imagePath);
+
+            $entityManager->remove($image);
+        }
 
         $entityManager->remove($room);
 

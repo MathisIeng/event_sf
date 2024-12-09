@@ -41,7 +41,7 @@ class RoomRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function search(string $search) {
+   public function search(string $search) {
 
         return $this->createQueryBuilder('r') // On crée un queryBuilder pour l'entité Animator
         ->where('r.name LIKE :search') // Clause pour titre

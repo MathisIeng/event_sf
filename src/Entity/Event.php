@@ -36,15 +36,15 @@ class Event
     private ?int $category_id = null;
 
     #[ORM\ManyToOne(targetEntity: Room::class, inversedBy: "events")]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "cascade")]
     private ?Room $room = null;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: "events")]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "cascade")]
     private ?Category $category = null;
 
     #[ORM\ManyToOne(targetEntity: Animator::class, inversedBy: "events")]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "cascade")]
     private ?Animator $animator = null;
 
     public function getRoom(): ?Room {

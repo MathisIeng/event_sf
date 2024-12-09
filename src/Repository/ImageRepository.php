@@ -40,4 +40,18 @@ class ImageRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findByEstablishmentId($establishment_Id): array
+    {
+
+        return $this->getEntityManager()
+            ->createQuery('
+                SELECT *
+                FROM image
+                INNER JOIN room ON room.id = image.room_id
+                WHERE room.establishment_id = :establishment_id
+                ')
+            ->setParameter('establishment_id', $establishment_Id)
+            ->getResult();
+    }
 }

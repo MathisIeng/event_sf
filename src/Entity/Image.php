@@ -17,6 +17,7 @@ class Image
     private ?string $path = null;
 
     #[ORM\ManyToOne(targetEntity: Room::class, inversedBy: 'images')]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'cascade')]
     private ?Room $room = null;
 
     public function getId(): ?int

@@ -69,9 +69,27 @@ class EstablishmentController extends AbstractController {
     }
 
     #[Route('/establishment/{id}/delete', name: 'establishment_delete')]
-    public function delete(int $id, EstablishmentRepository $establishmentRepository, EntityManagerInterface $entityManager): Response {
+    public function delete(int $id, EstablishmentRepository $establishmentRepository, EntityManagerInterface $entityManager, Request $request): Response {
 
         $establishment = $establishmentRepository->find($id);
+
+        // Récupérer les salles liées à l'établissement
+        $rooms = $establishment->getRooms();
+
+        foreach ($rooms as $room) {
+            // Récupérer les images de chaque salle
+            foreach ($room->getImages() as $image) {
+                // Construire le chemin de l'image
+                $imagePath = $this->getParameter('uploads_directory') . '/' . $image->getPath();
+
+                unlink($imagePath);  // Supprimer l'image du système de fichiers
+
+                // Supprimer l'image de la base de données
+                $entityManager->remove($image);
+            }
+            // Supprimer la salle de la base de données
+            $entityManager->remove($room);
+        }
 
         $entityManager->remove($establishment);
 
